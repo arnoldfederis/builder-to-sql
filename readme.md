@@ -13,5 +13,33 @@ Render Eloquent or Query builder to Sql
 composer require arnoldfederis/builder-to-sql
 ```
 
+## How to use
+Import BuilderToSql class or use the helper function.
+```phpt
+
+class TestController extends Controller
+{
+    public function index()
+    {
+        /* Class base */
+        // Query Builder
+        return BuilderToSql::render(DB::table('users')->where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        
+        // Eloquent Builder
+        return BuilderToSql::render(User::where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        
+        /* Function base */
+        // Query Builder
+        return builder_to_sql(DB::table('users')->where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        
+        // Eloquent Builder
+        return builder_to_sql(User::where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        
+        // Result
+        // select * from users where email = 'builder_to_sql@email.com' order by created_at desc
+    }
+}
+```
+
 ## License
 This is a free software licensed under the [MIT license](http://opensource.org/licenses/MIT).
