@@ -1,5 +1,5 @@
 {
-    "name": "arnolfofederis/builder-to-sql",
+    "name": "arnoldfederis/builder-to-sql",
     "description": "Render Eloquent or Query builder to Sql",
     "keywords": [
         "builder to sql",
@@ -9,7 +9,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Arnold Federis"
+            "name": "Arnolfo Federis"
         }
     ],
     "autoload": {
