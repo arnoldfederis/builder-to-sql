@@ -23,20 +23,20 @@ class TestController extends Controller
     {
         /* Class base */
         // Query Builder
-        return BuilderToSql::render(DB::table('users')->where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        return BuilderToSql::render(DB::table('users')->where('email', 'query_builder_to_sql@email.com')->orderByDesc('created_at'));
         
         // Eloquent Builder
-        return BuilderToSql::render(User::where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        return BuilderToSql::render(User::where('email', 'query_builder_to_sql@email.com')->orderByDesc('created_at'));
         
         /* Function base */
         // Query Builder
-        return query_builder_to_sql(DB::table('users')->where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        return query_builder_to_sql(DB::table('users')->where('email', 'query_builder_to_sql@email.com')->orderByDesc('created_at'));
         
         // Eloquent Builder
-        return query_builder_to_sql(User::where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        return query_builder_to_sql(User::where('email', 'query_builder_to_sql@email.com')->orderByDesc('created_at'));
         
         // Result
-        // select * from users where email = 'builder_to_sql@email.com' order by created_at desc
+        // select * from users where email = 'query_builder_to_sql@email.com' order by created_at desc
     }
 }
 ```
