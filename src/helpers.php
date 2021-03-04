@@ -13,7 +13,7 @@ if (! function_exists('builder_to_sql')) {
      * @param bool $withBackQuote
      * @return string
      */
-    function builder_to_sql($builder, bool $withBackQuote = false): string
+    function query_builder_to_sql($builder, bool $withBackQuote = false): string
     {
         return BuilderToSql::render($builder, $withBackQuote);
     }

@@ -30,10 +30,10 @@ class TestController extends Controller
         
         /* Function base */
         // Query Builder
-        return builder_to_sql(DB::table('users')->where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        return query_builder_to_sql(DB::table('users')->where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
         
         // Eloquent Builder
-        return builder_to_sql(User::where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
+        return query_builder_to_sql(User::where('email', 'builder_to_sql@email.com')->orderByDesc('created_at'));
         
         // Result
         // select * from users where email = 'builder_to_sql@email.com' order by created_at desc
