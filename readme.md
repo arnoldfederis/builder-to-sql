@@ -1,7 +1,11 @@
 ## Laravel Builder to SQL
 
 ## Description
-Render Eloquent or Query builder to Sql
+Render Eloquent or Query builder to Sql.
+
+In this package will automatically replace all `?` from `toSql()` result with your bindings. 
+
+This is useful when you don't want to manual query.
 
 ## Compatibility
 `Laravel 5 to latest version` 
