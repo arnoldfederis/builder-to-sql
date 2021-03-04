@@ -4,7 +4,7 @@ use BuilderToSql\Helper\BuilderToSql;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
-if (! function_exists('builder_to_sql')) {
+if (! function_exists('query_builder_to_sql')) {
 
     /**
      * Render Eloquent or Query builder to sql
