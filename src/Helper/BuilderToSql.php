@@ -16,15 +16,20 @@ class BuilderToSql
      */
     public static function render($builder, bool $withBackQuote = false): string
     {
-        // Find all letters with modulo & add another modulo in able to ignore it from `vsprintf`
-        $stringWithModulo = preg_replace_callback('/%([A-RT-Za-rt-z])/', function ($match) {
-            return current(array_map(function ($m) {
-                return "%{$m}";
-            }, $match));
-        }, $builder->toSql());
+        // check if query contains `?`
+        if (strpos($builder->toSql(), '?') !== false) {
+            // Find all letters with modulo & add another modulo in able to ignore it from `vsprintf`
+            $stringWithModulo = preg_replace_callback('/%/', function ($match) {
+                return current(array_map(function ($m) {
+                    return "%{$m}";
+                }, $match));
+            }, $builder->toSql());
 
-        $query = str_replace(['?'], ['\'%s\''], $stringWithModulo);
-        $query = vsprintf($query, $builder->getBindings());
+            $sql = str_replace(['?'], ['\'%s\''], $stringWithModulo);
+            $query = vsprintf($sql, $builder->getBindings());
+        } else {
+            $query = $builder->toSql();
+        }
 
         return $withBackQuote ? $query : str_replace('`', '', $query);
     }
